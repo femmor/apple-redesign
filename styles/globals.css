@@ -46,10 +46,33 @@
   }
 
   .inCartItems {
-    @apply absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 p-2 text-white;
+    @apply absolute -right-1 -top-1 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 p-2 text-[10px] text-white;
   }
 
   .profileImg {
     @apply absolute right-0 cursor-pointer rounded-full;
   }
+
+  /* Landing Page Styles */
+  .heroSection {
+    @apply sticky top-0 mx-auto flex h-screen max-w-[1350px] items-center justify-between px-8;
+  }
+
+  .heroTitleContainer {
+    @apply space-y-8;
+  }
+
+  .title {
+    @apply block space-y-3 text-5xl font-semibold tracking-wide lg:text-6xl xl:text-7xl;
+  }
+
+  .heroTitle {
+    @apply bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent;
+  }
+
+  .link {
+    @apply relative cursor-pointer text-lg font-medium before:absolute before:inset-x-0 before:-bottom-1.5 before:h-0.5 before:origin-left before:scale-x-0 before:transform before:rounded-bl before:bg-black before:transition-all before:duration-300 hover:before:scale-x-100;
+  }
+
+  /* Button Styles */
 }
