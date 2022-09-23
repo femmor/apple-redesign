@@ -1,23 +1,28 @@
-import { useState } from 'react';
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Header, Landing } from '../components';
 import { Tab } from '@headlessui/react';
 import { fetchCategories } from '../utils/fetchCategories';
 
-interface Props {}
+interface Props {
+  categories: Category[];
+}
 
 // Backend code
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const categories = await fetchCategories();
 
   return {
-    props: {},
+    props: {
+      categories,
+    },
   };
 };
 
-const Home: NextPage = () => {
-  const [categories, setCategories] = useState([]);
+const Home = ({ categories }: Props) => {
+  const uniqueCategories = categories.filter(cat => cat.title !== 'Apple');
+
+  const showProducts = () => {};
 
   return (
     <div className="">
@@ -35,21 +40,21 @@ const Home: NextPage = () => {
 
           <Tab.Group>
             <Tab.List className="promoTabList">
-              {/* {categories.map(category => ( */}
-              <Tab
-              // key={category._id}
-              // id={category._id}
-              // className={({ selected }) =>
-              //   `promoTab ${
-              //     selected
-              //       ? 'borderGradient bg-[#35383C] text-white'
-              //       : 'border-b-2 border-[#35383C] text-[#747474]'
-              //   }`
-              // }
-              >
-                {/* {category.title} */} Test Title
-              </Tab>
-              {/* ))} */}
+              {uniqueCategories.map(category => (
+                <Tab
+                  key={category._id}
+                  id={category._id}
+                  className={({ selected }) =>
+                    `promoTab ${
+                      selected
+                        ? 'borderGradient bg-[#35383C] text-white'
+                        : 'border-b-2 border-[#35383C] text-[#747474]'
+                    }`
+                  }
+                >
+                  {category.title}
+                </Tab>
+              ))}
             </Tab.List>
             <Tab.Panels className="promoTabPanels">
               Test

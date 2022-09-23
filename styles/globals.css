@@ -97,4 +97,12 @@
   .promoTabPanels {
     @apply mx-auto max-w-fit pt-10 pb-24 sm:px-4;
   }
+
+  .borderGradient {
+    text-align: center;
+    padding-bottom: 5px;
+    background: linear-gradient(to right, #ec4899, #bb5cf6) left bottom
+      no-repeat;
+    background-size: 100% 2px;
+  }
 }
